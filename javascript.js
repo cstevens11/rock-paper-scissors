@@ -3,6 +3,15 @@ console.log("testing")
 
 
 
+//user score tracker
+let userScore = 0
+
+//cpu score tracker
+let cpuScore = 0
+
+
+
+
 // randomly picks rock, paper, or scissors based on randomNumber
 let cpuPlay = function() {
     //randomly selects either 1,2, or 3
@@ -48,12 +57,14 @@ let singleRound = function (userChoice, cpuChoice) {
         (userChoice === "paper" && cpuChoice === "scissors") ||
         (userChoice === "scissors" && cpuChoice === "rock")
     ) {
+        cpuScore = ++cpuScore
         return(loss)
     } else if (
         (userChoice === "rock" && cpuChoice === "scissors") ||
         (userChoice === "paper" && cpuChoice === "rock") ||
         (userChoice === "scissors" && cpuChoice === "paper")
     ) {
+        userScore = ++userScore
         return(win)
     } else {
         return("Oops! Looks like you mispelled your choice!")
@@ -61,13 +72,6 @@ let singleRound = function (userChoice, cpuChoice) {
 }
 
 
-//user score tracker
-let userScore = 0
-
-//cpu score tracker
-let cpuScore = 0
-
-let scoreBoard = `Current score is: USER: ${userScore} CPU: ${cpuScore}`
 
 
 
@@ -79,6 +83,8 @@ console.log("Computer chose " + cpuChoice)
 console.log("User chose " + userChoice)
 
 console.log(singleRound(userChoice, cpuChoice));
+let scoreBoard = `Current score is: USER: ${userScore} CPU: ${cpuScore}`
+
 
 
 
