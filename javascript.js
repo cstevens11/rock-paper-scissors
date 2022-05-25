@@ -1,10 +1,12 @@
 console.log("testing")
 
-//randomly selects either 1,2, or 3
-let randomNumber = Math.floor(Math.random() * 3) + 1;
+
+
 
 // randomly picks rock, paper, or scissors based on randomNumber
 let cpuPlay = function() {
+    //randomly selects either 1,2, or 3
+    let randomNumber = Math.floor(Math.random() * 3) + 1;
    if (randomNumber === 1) {
        return("rock")
    } else if (randomNumber === 2) {
@@ -25,14 +27,17 @@ let userSelection = prompt("Please type rock, paper, or scissors.");
 //stores user input of rock/paper/scissors in lowercase to make input case-insensitive
 let userChoice = userSelection.toLowerCase();
 
+//draw statement stencil
+let draw = `It's a draw! You both chose ${userChoice}!`
+
 // win statement stencil
 let win = `You win! ${userChoice} beats ${cpuChoice}!`;
 
 // loss statement stencil
 let loss = `You lose! ${cpuChoice} beats ${userChoice}!`;
 
-//draw statement stencil
-let draw = `It's a draw! You both chose ${userChoice}!`
+
+
 
 //takes cpuChoice and userChoice, then outputs string declaring winner.
 let singleRound = function (userChoice, cpuChoice) {
@@ -53,6 +58,29 @@ let singleRound = function (userChoice, cpuChoice) {
     } else {
         return("Oops! Looks like you mispelled your choice!")
     }
+}
+
+
+//user score tracker
+let userScore = 0
+
+//cpu score tracker
+let cpuScore = 0
+
+let scoreBoard = `Current score is: USER: ${userScore} CPU: ${cpuScore}`
+
+
+
+
+console.log("second testing")
+
+//easy variable tests
+console.log("Computer chose " + cpuChoice)
+console.log("User chose " + userChoice)
+
+console.log(singleRound(userChoice, cpuChoice));
+
+
 
 // basis if/else statement version of singleRound
     // if (userChoice === cpuChoice) {
@@ -78,15 +106,3 @@ let singleRound = function (userChoice, cpuChoice) {
     // } else {
     //     return("Oops! Looks like you mispelled your choice!")
     // }
-}
-
-console.log("second testing")
-
-//easy variable tests
-console.log("Computer chose " + cpuChoice)
-console.log("User chose " + userChoice)
-
-console.log(singleRound(userChoice, cpuChoice));
-
-
-
