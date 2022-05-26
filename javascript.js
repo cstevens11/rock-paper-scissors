@@ -33,6 +33,11 @@ let cpuChoice = cpuSelection();
 //asks for user input of rock/paper/scissors
 let userSelection = function() {
     let input = prompt("Please type rock, paper, or scissors.");
+
+//makes window reprompt if user presses cancel
+    while(input == null) {
+        input = prompt("Please type rock, paper, or scissors.");
+    }
     input = input.toLowerCase();
     return(input)
 }
@@ -53,7 +58,7 @@ let loss = `You lose! ${cpuChoice} beats ${userChoice}!`;
 
 
 //takes cpuChoice and userChoice, then outputs string declaring winner.
-let singleRound = function (userChoice, cpuChoice) {
+let checkWinner = function (userChoice, cpuChoice) {
     if (userChoice === cpuChoice) {
         return(draw)
     } else if (   
@@ -75,6 +80,10 @@ let singleRound = function (userChoice, cpuChoice) {
     }
 }
 
+let singleRound = function () {
+    
+    
+}
 
 
 
@@ -86,5 +95,5 @@ console.log("second testing")
 console.log("Computer chose " + cpuChoice)
 console.log("User chose " + userChoice)
 
-console.log(singleRound(userChoice, cpuChoice));
+console.log(checkWinner(userChoice, cpuChoice));
 let scoreBoard = `Current score is: USER: ${userScore} CPU: ${cpuScore}`
