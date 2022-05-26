@@ -13,7 +13,7 @@ let cpuScore = 0
 
 
 // randomly picks rock, paper, or scissors based on randomNumber
-let cpuPlay = function() {
+let cpuSelection = function() {
     //randomly selects either 1,2, or 3
     let randomNumber = Math.floor(Math.random() * 3) + 1;
    if (randomNumber === 1) {
@@ -28,13 +28,17 @@ let cpuPlay = function() {
 };
 
 //store computerPlay output in variable computerChoice
-let cpuChoice = cpuPlay();
+let cpuChoice = cpuSelection();
 
 //asks for user input of rock/paper/scissors
-let userSelection = prompt("Please type rock, paper, or scissors.");
+let userSelection = function() {
+    let input = prompt("Please type rock, paper, or scissors.");
+    input = input.toLowerCase();
+    return(input)
+}
 
 //stores user input of rock/paper/scissors in lowercase to make input case-insensitive
-let userChoice = userSelection.toLowerCase();
+let userChoice = userSelection();
 
 //draw statement stencil
 let draw = `It's a draw! You both chose ${userChoice}!`
@@ -84,31 +88,3 @@ console.log("User chose " + userChoice)
 
 console.log(singleRound(userChoice, cpuChoice));
 let scoreBoard = `Current score is: USER: ${userScore} CPU: ${cpuScore}`
-
-
-
-
-// basis if/else statement version of singleRound
-    // if (userChoice === cpuChoice) {
-    //     return(`It's a Draw! You both chose ${userChoice}!`)
-    // } else if (userChoice === "rock") {
-    //     if (cpuChoice === "scissors") {
-    //         return(win)
-    //     } else if (cpuChoice === "paper") {
-    //         return(loss)
-    //     }
-    // } else if (userChoice === "paper") {
-    //     if (cpuChoice === "rock") {
-    //         return(win)
-    //     } else if (cpuChoice === "scissors") {
-    //         return(loss)
-    //     }
-    // } else if (userChoice === "scissors") {
-    //     if (cpuChoice === "paper") {
-    //         return(win)
-    //     } else if (cpuChoice === "rock") {
-    //         return(loss)
-    //     }
-    // } else {
-    //     return("Oops! Looks like you mispelled your choice!")
-    // }
