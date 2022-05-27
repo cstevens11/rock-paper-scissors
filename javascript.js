@@ -80,6 +80,7 @@ let game = function() {
         singleRound();
         console.log(`USER SCORE: ${userScore}`)
         console.log(`CPU SCORE: ${cpuScore}`)
+        console.log("--------------------------")
     }
     console.log(`FINAL SCORE: User:${userScore} Cpu:${cpuScore}`)
     finalWinner(userScore, cpuScore)
