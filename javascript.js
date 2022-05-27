@@ -9,7 +9,7 @@ let userScore = 0
 //cpu score tracker
 let cpuScore = 0
 
-
+let round = 0
 
 
 // randomly picks rock, paper, or scissors based on randomNumber
@@ -52,14 +52,16 @@ let userSelection = function() {
 
 
 //takes cpuChoice and userChoice, then outputs string declaring winner.
-let checkWinner = function (userChoice, cpuChoice) {
+let checkWinner = function(userChoice, cpuChoice) {
     if (userChoice === cpuChoice) {
+        round = ++ round
         return(`It's a draw! You both chose ${userChoice}!`)
     } else if (   
         (userChoice === "rock" && cpuChoice === "paper") || 
         (userChoice === "paper" && cpuChoice === "scissors") ||
         (userChoice === "scissors" && cpuChoice === "rock")
     ) {
+        round = ++round
         cpuScore = ++cpuScore
         return(`You lose! ${cpuChoice} beats ${userChoice}!`)
     } else if (
@@ -67,6 +69,7 @@ let checkWinner = function (userChoice, cpuChoice) {
         (userChoice === "paper" && cpuChoice === "rock") ||
         (userChoice === "scissors" && cpuChoice === "paper")
     ) {
+        round = ++round
         userScore = ++userScore
         return(`You win! ${userChoice} beats ${cpuChoice}!`)
     } else {
@@ -74,19 +77,41 @@ let checkWinner = function (userChoice, cpuChoice) {
     }
 }
 
-let singleRound = function () {
+let singleRound = function() {
     let cpuChoice = cpuSelection();
     let userChoice = userSelection();
     const winner = checkWinner(userChoice, cpuChoice);
-    console.log(`Cpu chose ${cpuChoice}`);
-    console.log(`User chose ${userChoice}`);
+    console.log(`ROUND #` + round)
+    console.log(`CPU chose ${cpuChoice}`);
+    console.log(`USER chose ${userChoice}`);
     console.log(winner)
     return(winner)
 }
 
+// let finalWinner = function(userScore, cpuScore) {
+//     if (userScore = cpuScore) {
+//         return("FINAL WINNER: It's a tie game!")
+//     } else if (userScore > cpuScore) {
+//         return("FINAL WINNER: User won the game!")
+//     } else if (userScore < cpuScore) {
+//         return("FINAL WINNER: Cpu won the game!")
+//     }
+
+// }
+
 let game = function() {
     for (let i = 0; i < 5; i++) {
         singleRound();
+        console.log(`USER SCORE: ${userScore}`)
+        console.log(`CPU SCORE: ${cpuScore}`)
+    }
+    console.log(`FINAL SCORE: User:${userScore} Cpu:${cpuScore}`)
+    if (userScore == cpuScore) {
+        console.log("FINAL SCORE: ITS A TIE!")
+    } else if (userScore > cpuScore) {
+        console.log("FINAL SCORE: USER WINS!")
+    } else if (userScore < cpuScore) {
+        console.log("FINAL SCORE: CPU WINS!")
     }
 }
 
@@ -98,6 +123,8 @@ console.log("second testing")
 //easy variable tests
 // console.log("Computer chose " + cpuChoice)
 // console.log("User chose " + userChoice)
-console.log(game())
+game()
+// console.log(`User score is ${userScore}!`)
+// console.log(`Cpu score is ${cpuScore}!`)
+
 // console.log(checkWinner(userChoice, cpuChoice));
-let scoreBoard = `Current score is: USER: ${userScore} CPU: ${cpuScore}`
