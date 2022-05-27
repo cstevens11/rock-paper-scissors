@@ -4,6 +4,16 @@ let cpuScore = 0
 
 let round = 0
 
+const choices = ["rock", "paper", "scissors"]
+
+let validateInput = function(choice) {
+    if(choices.includes(choice)) {
+        return true
+    } else {
+        return false
+    }
+}
+
 // randomly picks rock, paper, or scissors based on randomNumber
 let cpuSelection = function() {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -25,6 +35,12 @@ let userSelection = function() {
         input = prompt("Please type rock, paper, or scissors.");
     }
     input = input.toLowerCase();
+    let check = validateInput(input)
+    while (check == false) {
+        input = prompt("Oops! Looks like you mispelled your choice! Please type rock, paper, or scissors!");
+        input = input.toLowerCase();
+        check = validateInput(input)
+    }
     return(input)
 }
 
