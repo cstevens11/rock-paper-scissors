@@ -28,13 +28,11 @@ let cpuSelection = function() {
 };
 
 //store computerPlay output in variable computerChoice
-let cpuChoice = cpuSelection();
+// let cpuChoice = cpuSelection();
 
 //asks for user input of rock/paper/scissors
 let userSelection = function() {
     let input = prompt("Please type rock, paper, or scissors.");
-
-//makes window reprompt if user presses cancel
     while(input == null) {
         input = prompt("Please type rock, paper, or scissors.");
     }
@@ -43,16 +41,12 @@ let userSelection = function() {
 }
 
 //stores user input of rock/paper/scissors in lowercase to make input case-insensitive
-let userChoice = userSelection();
+// let userChoice = userSelection();
 
-//draw statement stencil
-let draw = `It's a draw! You both chose ${userChoice}!`
 
-// win statement stencil
-let win = `You win! ${userChoice} beats ${cpuChoice}!`;
 
-// loss statement stencil
-let loss = `You lose! ${cpuChoice} beats ${userChoice}!`;
+
+
 
 
 
@@ -60,31 +54,41 @@ let loss = `You lose! ${cpuChoice} beats ${userChoice}!`;
 //takes cpuChoice and userChoice, then outputs string declaring winner.
 let checkWinner = function (userChoice, cpuChoice) {
     if (userChoice === cpuChoice) {
-        return(draw)
+        return(`It's a draw! You both chose ${userChoice}!`)
     } else if (   
         (userChoice === "rock" && cpuChoice === "paper") || 
         (userChoice === "paper" && cpuChoice === "scissors") ||
         (userChoice === "scissors" && cpuChoice === "rock")
     ) {
         cpuScore = ++cpuScore
-        return(loss)
+        return(`You lose! ${cpuChoice} beats ${userChoice}!`)
     } else if (
         (userChoice === "rock" && cpuChoice === "scissors") ||
         (userChoice === "paper" && cpuChoice === "rock") ||
         (userChoice === "scissors" && cpuChoice === "paper")
     ) {
         userScore = ++userScore
-        return(win)
+        return(`You win! ${userChoice} beats ${cpuChoice}!`)
     } else {
         return("Oops! Looks like you mispelled your choice!")
     }
 }
 
 let singleRound = function () {
-    
-    
+    let cpuChoice = cpuSelection();
+    let userChoice = userSelection();
+    const winner = checkWinner(userChoice, cpuChoice);
+    console.log(`Cpu chose ${cpuChoice}`);
+    console.log(`User chose ${userChoice}`);
+    console.log(winner)
+    return(winner)
 }
 
+let game = function() {
+    for (let i = 0; i < 5; i++) {
+        singleRound();
+    }
+}
 
 
 
@@ -92,8 +96,8 @@ let singleRound = function () {
 console.log("second testing")
 
 //easy variable tests
-console.log("Computer chose " + cpuChoice)
-console.log("User chose " + userChoice)
-
-console.log(checkWinner(userChoice, cpuChoice));
+// console.log("Computer chose " + cpuChoice)
+// console.log("User chose " + userChoice)
+console.log(game())
+// console.log(checkWinner(userChoice, cpuChoice));
 let scoreBoard = `Current score is: USER: ${userScore} CPU: ${cpuScore}`
