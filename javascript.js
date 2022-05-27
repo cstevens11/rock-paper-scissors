@@ -38,6 +38,9 @@ let userSelection = function() {
     let check = validateInput(input)
     while (check == false) {
         input = prompt("Oops! Looks like you mispelled your choice! Please type rock, paper, or scissors!");
+        while(input == null) {
+            input = prompt("Please type rock, paper, or scissors.");
+        }
         input = input.toLowerCase();
         check = validateInput(input)
     }
