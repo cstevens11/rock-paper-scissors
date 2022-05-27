@@ -69,9 +69,6 @@ let checkWinner = function(userChoice, cpuChoice) {
         round = ++round
         userScore = ++userScore
         return(`You win! ${userChoice} beats ${cpuChoice}!`)
-    } else {
-        round = ++round
-        return("Oops! Looks like you mispelled your choice! This turn will be skipped.")
     }
 }
 
