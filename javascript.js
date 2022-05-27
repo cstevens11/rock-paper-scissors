@@ -28,6 +28,7 @@ let userSelection = function() {
     return(input)
 }
 
+
 //takes cpuChoice and userChoice, then outputs string declaring winner.
 let checkWinner = function(userChoice, cpuChoice) {
     if (userChoice === cpuChoice) {
@@ -50,7 +51,8 @@ let checkWinner = function(userChoice, cpuChoice) {
         userScore = ++userScore
         return(`You win! ${userChoice} beats ${cpuChoice}!`)
     } else {
-        return("Oops! Looks like you mispelled your choice!")
+        round = ++round
+        return("Oops! Looks like you mispelled your choice! This turn will be skipped.")
     }
 }
 
