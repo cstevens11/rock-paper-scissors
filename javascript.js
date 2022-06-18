@@ -29,23 +29,23 @@ let cpuSelection = function() {
 };
 
 //asks for user input of rock/paper/scissors
-let userSelection = function() {
-    let input = prompt("Please type rock, paper, or scissors.");
-    while(input == null) {
-        input = prompt("Please type rock, paper, or scissors.");
-    }
-    input = input.toLowerCase();
-    let check = validateInput(input)
-    while (check == false) {
-        input = prompt("Oops! Looks like you mispelled your choice! Please type rock, paper, or scissors!");
-        while(input == null) {
-            input = prompt("Please type rock, paper, or scissors.");
-        }
-        input = input.toLowerCase();
-        check = validateInput(input)
-    }
-    return(input)
-}
+// let userSelection = function() {
+//     let input = prompt("Please type rock, paper, or scissors.");
+//     while(input == null) {
+//         input = prompt("Please type rock, paper, or scissors.");
+//     }
+//     input = input.toLowerCase();
+//     let check = validateInput(input)
+//     while (check == false) {
+//         input = prompt("Oops! Looks like you mispelled your choice! Please type rock, paper, or scissors!");
+//         while(input == null) {
+//             input = prompt("Please type rock, paper, or scissors.");
+//         }
+//         input = input.toLowerCase();
+//         check = validateInput(input)
+//     }
+//     return(input)
+// }
 
 
 //takes cpuChoice and userChoice, then outputs string declaring winner.
@@ -72,15 +72,19 @@ let checkWinner = function(userChoice, cpuChoice) {
     }
 }
 
-let singleRound = function() {
+
+
+let singleRound = function(e) {
+    let userSelection = `${e.target.id}`
     let cpuChoice = cpuSelection();
-    let userChoice = userSelection();
+    let userChoice = userSelection;
     const winner = checkWinner(userChoice, cpuChoice);
     console.log(`ROUND #` + round)
     console.log(`CPU chose ${cpuChoice}`);
     console.log(`USER chose ${userChoice}`);
     console.log(winner)
     return(winner)
+    console.log(userSelection)
 }
 
 let finalWinner = function(userScore, cpuScore) {
@@ -93,16 +97,39 @@ let finalWinner = function(userScore, cpuScore) {
     }
 }
 
-let game = function() {
-    for (let i = 0; i < 5; i++) {
-        singleRound();
-        console.log(`USER SCORE: ${userScore}`)
-        console.log(`CPU SCORE: ${cpuScore}`)
-        console.log("--------------------------")
-    }
-    console.log(`FINAL SCORE: User:${userScore} Cpu:${cpuScore}`)
-    finalWinner(userScore, cpuScore)
-}
+
+// const buttons = document.querySelector(".rock");
+// buttons.addEventListener('click', () => {
+//     alert('Hellooooo');
+// });
+
+let testAlert = function (e) {
+    console.log(e.target.id)
+
+};
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button=> button.addEventListener('click', singleRound));
+    // userSelection = button.classList.value;
 
 
-game()
+
+// buttons.forEach(button => button.addEventListener('click', uWu))
+//     const userD = function(e) {
+//         const userSelection = this.classList.value
+//     }
+
+// let game = function() {
+//     for (let i = 0; i < 5; i++) {
+//         singleRound();
+//         console.log(`USER SCORE: ${userScore}`)
+//         console.log(`CPU SCORE: ${cpuScore}`)
+//         console.log("--------------------------")
+//     }
+//     console.log(`FINAL SCORE: User:${userScore} Cpu:${cpuScore}`)
+//     finalWinner(userScore, cpuScore)
+// }
+
+// singleRound()
+// game()
+console.log("test")
