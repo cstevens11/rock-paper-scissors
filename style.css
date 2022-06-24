@@ -1,0 +1,4 @@
+.container, .results {
+    border: 2px solid green;
+    white-space: pre-wrap;
+}

@@ -79,13 +79,25 @@ let singleRound = function(e) {
     let cpuChoice = cpuSelection();
     let userChoice = userSelection;
     const winner = checkWinner(userChoice, cpuChoice);
-    console.log(`ROUND #` + round)
-    console.log(`CPU chose ${cpuChoice}`);
-    console.log(`USER chose ${userChoice}`);
-    console.log(winner)
+    // console.log(`ROUND #` + round)
+    // console.log(`CPU chose ${cpuChoice}`);
+    // console.log(`USER chose ${userChoice}`);
+    // console.log(winner)
+    // console.log(`USER SCORE: ${userScore}`)
+    // console.log(`CPU SCORE: ${cpuScore}`)
+    textResults(round, cpuChoice, userChoice, winner)
     return(winner)
-    console.log(userSelection)
 }
+
+let textResults = function(round, cpuChoice, userChoice, winner){
+   const maincontainer = document.querySelector(".container")
+   const div = document.createElement("div");
+   div.classList.add('results')
+   div.textContent = `ROUND #` + round + `\nCPU chose ${cpuChoice}` + 
+        `\nUSER chose ${userChoice}\n` + winner;
+   maincontainer.appendChild(div)
+}
+
 
 let finalWinner = function(userScore, cpuScore) {
     if (userScore == cpuScore) {
@@ -98,21 +110,20 @@ let finalWinner = function(userScore, cpuScore) {
 }
 
 
-// const buttons = document.querySelector(".rock");
-// buttons.addEventListener('click', () => {
-//     alert('Hellooooo');
-// });
 
-let testAlert = function (e) {
-    console.log(e.target.id)
 
-};
+// let testAlert = function (e) {
+//     console.log(e.target.id)
 
-const buttons = document.querySelectorAll("button");
+// };
+
+const buttons = document.querySelectorAll(".game");
 buttons.forEach(button=> button.addEventListener('click', singleRound));
-    // userSelection = button.classList.value;
 
 
+
+
+// textResults()
 
 // buttons.forEach(button => button.addEventListener('click', uWu))
 //     const userD = function(e) {
