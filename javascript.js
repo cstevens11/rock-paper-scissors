@@ -1,6 +1,6 @@
-let userScore = 0
+let userScore = 4
 
-let cpuScore = 0
+let cpuScore = 4
 
 let round = 0
 
@@ -85,9 +85,14 @@ let singleRound = function(e) {
     // console.log(winner)
     // console.log(`USER SCORE: ${userScore}`)
     // console.log(`CPU SCORE: ${cpuScore}`)
-    textResults(round, cpuChoice, userChoice, winner)
+    textResults(round, cpuChoice, userChoice, winner);
+    pointTracker();
     return(winner)
 }
+
+// if (userScore === 5 || cpuScore === 5) {
+//     modal.style.display = "block"
+// }
 
 let textResults = function(round, cpuChoice, userChoice, winner){
    const maincontainer = document.querySelector(".container")
@@ -98,6 +103,15 @@ let textResults = function(round, cpuChoice, userChoice, winner){
    maincontainer.appendChild(div)
 }
 
+let pointTracker = function() {
+    const userpoints = document.querySelector(".userpoints");
+    const cpupoints = document.querySelector(".cpupoints");
+    userpoints.textContent = `USER SCORE: ${userScore}`;
+    cpupoints.textContent = `CPU SCORE: ${cpuScore}`;
+    // if (userScore === 5 || cpuScore === 5) {
+    //     modal.style.display = "block"
+    // }
+}
 
 let finalWinner = function(userScore, cpuScore) {
     if (userScore == cpuScore) {
@@ -144,3 +158,9 @@ buttons.forEach(button=> button.addEventListener('click', singleRound));
 // singleRound()
 // game()
 console.log("test")
+
+const openModal = document.querySelector(".openModal")
+const modalContainer = document.querySelector(".modalContainer")
+openModal.addEventListener('click', () => {
+    modalContainer.style.display = "flex";
+})

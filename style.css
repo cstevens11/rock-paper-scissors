@@ -2,3 +2,31 @@
     border: 2px solid green;
     white-space: pre-wrap;
 }
+
+.modalContainer {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+
+}
+
+.modal {
+    background-color: white;
+    width: 600px;
+    height: 300px;
+    max-width: 100%;
+    padding: 50px;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    text-align: center;
+}
+
+
+
+
