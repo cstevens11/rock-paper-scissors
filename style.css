@@ -131,6 +131,11 @@
     border: 2px solid black;
 }
 
+.whoWins {
+    display: flex;
+    font-size: 32px;
+}
+
 .modalContainer {
     background-color: rgba(0, 0, 0, 0.3);
     display: none;

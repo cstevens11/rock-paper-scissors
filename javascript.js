@@ -4,9 +4,19 @@ let cpuScore = 0
 
 let round = 0
 
-const choices = ["rock", "paper", "scissors"]
+let finalwinner = ""
+
+const choices = ["Rock", "Paper", "Scissors"]
 const openModal = document.querySelector(".openModal")
 const modalContainer = document.querySelector(".modalContainer")
+const resultContainer = document.querySelector(".resultContainer");
+const roundNUM = document.querySelector(".roundNUM");
+const userpick = document.querySelector(".userpick");
+const cpupick = document.querySelector(".cpupick");
+const whoWins = document.querySelector(".whoWins");
+const userpoints = document.querySelector(".userpoints");
+const cpupoints = document.querySelector(".cpupoints");
+
 
 
 // let resultpopup = function () {
@@ -25,11 +35,11 @@ let validateInput = function(choice) {
 let cpuSelection = function() {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
    if (randomNumber === 1) {
-       return("rock")
+       return("Rock")
    } else if (randomNumber === 2) {
-       return("paper")
+       return("Paper")
    } else if (randomNumber === 3) {
-       return("scissors")
+       return("Scissors")
    } else {
        alert("Something went wrong...")
    }
@@ -61,17 +71,17 @@ let checkWinner = function(userChoice, cpuChoice) {
         round = ++ round
         return(`It's a draw! You both chose ${userChoice}!`)
     } else if (   
-        (userChoice === "rock" && cpuChoice === "paper") || 
-        (userChoice === "paper" && cpuChoice === "scissors") ||
-        (userChoice === "scissors" && cpuChoice === "rock")
+        (userChoice === "Rock" && cpuChoice === "Paper") || 
+        (userChoice === "Paper" && cpuChoice === "Scissors") ||
+        (userChoice === "Scissors" && cpuChoice === "Rock")
     ) {
         round = ++round
         cpuScore = ++cpuScore
         return(`You lose! ${cpuChoice} beats ${userChoice}!`)
     } else if (
-        (userChoice === "rock" && cpuChoice === "scissors") ||
-        (userChoice === "paper" && cpuChoice === "rock") ||
-        (userChoice === "scissors" && cpuChoice === "paper")
+        (userChoice === "Rock" && cpuChoice === "Scissors") ||
+        (userChoice === "Paper" && cpuChoice === "Rock") ||
+        (userChoice === "Scissors" && cpuChoice === "Paper")
     ) {
         round = ++round
         userScore = ++userScore
@@ -98,16 +108,14 @@ let singleRound = function(e) {
     return(winner)
 }
 
-// if (userScore === 5 || cpuScore === 5) {
-//     modal.style.display = "block"
-// }
+
 
 let textResults = function(round, cpuChoice, userChoice, winner){
-    const resultContainer = document.querySelector(".resultContainer");
-    const roundNUM = document.querySelector(".roundNUM");
-    const userpick = document.querySelector(".userpick");
-    const cpupick = document.querySelector(".cpupick");
-    const whoWins = document.querySelector(".whoWins");
+    // const resultContainer = document.querySelector(".resultContainer");
+    // const roundNUM = document.querySelector(".roundNUM");
+    // const userpick = document.querySelector(".userpick");
+    // const cpupick = document.querySelector(".cpupick");
+    // const whoWins = document.querySelector(".whoWins");
     roundNUM.textContent = `ROUND #` + round; 
     userpick.textContent = `${userChoice}`;
     cpupick.textContent = `${cpuChoice}`;
@@ -116,35 +124,50 @@ let textResults = function(round, cpuChoice, userChoice, winner){
 }
 
 let pointTracker = function() {
-    const userpoints = document.querySelector(".userpoints");
-    const cpupoints = document.querySelector(".cpupoints");
+    // const userpoints = document.querySelector(".userpoints");
+    // const cpupoints = document.querySelector(".cpupoints");
     userpoints.textContent = `USER SCORE: ${userScore}`;
     cpupoints.textContent = `CPU SCORE: ${cpuScore}`;
     if (userScore == 5 || cpuScore == 5) {
-        modalContainer.style.display = "flex";
+        finalWinner(userScore, cpuScore);
+        updateModal(finalwinner, userScore, cpuScore);
     }
 }
 
 let finalWinner = function(userScore, cpuScore) {
-    if (userScore == cpuScore) {
-        console.log("FINAL SCORE: ITS A TIE!")
-    } else if (userScore > cpuScore) {
-        console.log("FINAL SCORE: USER WINS!")
+    if (userScore > cpuScore) {
+         finalwinner = "USER"
     } else if (userScore < cpuScore) {
-        console.log("FINAL SCORE: CPU WINS!")
+         finalwinner = "CPU"
     }
 }
 
+let updateModal = function (finalwinner, userScore, cpuScore) {
+    const whoWon = document.querySelector(".whoWon");
+    const userfinal = document.querySelector(".userfinal");
+    const cpufinal = document.querySelector(".cpufinal");
+    whoWon.textContent = `${finalwinner}`
+    userfinal.textContent = `${userScore}`
+    cpufinal.textContent = `${cpuScore}`
+    modalContainer.style.display = "flex";
+}
 
+let restart = function () {
+    userScore = 0;
+    cpuScore = 0;
+    round = 0;
+    userpoints.textContent = `USER SCORE: ${userScore}`;
+    cpupoints.textContent = `CPU SCORE: ${cpuScore}`;
+    modalContainer.style.display = "none";
+    resultContainer.style.display = "none";
+}
 
-
-// let testAlert = function (e) {
-//     console.log(e.target.id)
-
-// };
 
 const buttons = document.querySelectorAll(".game");
 buttons.forEach(button=> button.addEventListener('click', singleRound));
+
+const newGame = document.querySelector(".restartbtn");
+newGame.addEventListener('click', restart);
 
 
 
