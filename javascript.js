@@ -7,7 +7,6 @@ let round = 0
 const choices = ["rock", "paper", "scissors"]
 const openModal = document.querySelector(".openModal")
 const modalContainer = document.querySelector(".modalContainer")
-// const resultcontainer = document.querySelector(".resultcontainer")
 
 
 // let resultpopup = function () {
@@ -104,10 +103,16 @@ let singleRound = function(e) {
 // }
 
 let textResults = function(round, cpuChoice, userChoice, winner){
-   const roundResults = document.querySelector(".roundResults");
-   roundResults.classList.add("results");
-   roundResults.textContent = `ROUND #` + round + `\nCPU chose ${cpuChoice}` + 
-        `\nUSER chose ${userChoice}\n` + winner;
+    const resultContainer = document.querySelector(".resultContainer");
+    const roundNUM = document.querySelector(".roundNUM");
+    const userpick = document.querySelector(".userpick");
+    const cpupick = document.querySelector(".cpupick");
+    const whoWins = document.querySelector(".whoWins");
+    roundNUM.textContent = `ROUND #` + round; 
+    userpick.textContent = `${userChoice}`;
+    cpupick.textContent = `${cpuChoice}`;
+    whoWins.textContent = `${winner}`;
+    resultContainer.style.display = "flex";
 }
 
 let pointTracker = function() {

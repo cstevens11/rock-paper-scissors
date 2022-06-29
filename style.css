@@ -72,17 +72,8 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-
-/* .resultContainer, .results {
-    border: 2px solid green;
-    white-space: pre-wrap;
-    display: flex
-} */
-
-
-
 .resultContainer {
-    display: flex;
+    display: none;
     padding: 10px;
     background-color: chartreuse;
     justify-content: center;
@@ -138,14 +129,7 @@
     align-items: center;
     justify-content: center;
     border: 2px solid black;
-
-
 }
-
-
-
-
-
 
 .modalContainer {
     background-color: rgba(0, 0, 0, 0.3);
@@ -157,7 +141,6 @@
     left: 0;
     height: 100vh;
     width: 100vw;
-
 }
 
 .modal {
@@ -183,7 +166,6 @@
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
     width: 300px;
-
 }
 
 .whoWon {
@@ -211,7 +193,6 @@
     justify-content: center;
     border: 2px solid black;
     padding: 2px 0;
-
 }
 
 
@@ -221,7 +202,6 @@
     margin-top: -2px;
     width: 500px;
     font-size: 48px;
-
 }
 
 .userfinal, .cpufinal{
@@ -230,8 +210,6 @@
     align-items: center;
     justify-content: center;
     border: 2px solid black;
-
-
 }
 
 
