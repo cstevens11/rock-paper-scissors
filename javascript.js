@@ -1,10 +1,18 @@
-let userScore = 4
+let userScore = 0
 
-let cpuScore = 4
+let cpuScore = 0
 
 let round = 0
 
 const choices = ["rock", "paper", "scissors"]
+const openModal = document.querySelector(".openModal")
+const modalContainer = document.querySelector(".modalContainer")
+// const resultcontainer = document.querySelector(".resultcontainer")
+
+
+// let resultpopup = function () {
+//     resultcontainer.style.display = "flex";
+// }
 
 let validateInput = function(choice) {
     if(choices.includes(choice)) {
@@ -87,6 +95,7 @@ let singleRound = function(e) {
     // console.log(`CPU SCORE: ${cpuScore}`)
     textResults(round, cpuChoice, userChoice, winner);
     pointTracker();
+    // resultpopup();
     return(winner)
 }
 
@@ -95,12 +104,10 @@ let singleRound = function(e) {
 // }
 
 let textResults = function(round, cpuChoice, userChoice, winner){
-   const maincontainer = document.querySelector(".container")
-   const div = document.createElement("div");
-   div.classList.add('results')
-   div.textContent = `ROUND #` + round + `\nCPU chose ${cpuChoice}` + 
+   const roundResults = document.querySelector(".roundResults");
+   roundResults.classList.add("results");
+   roundResults.textContent = `ROUND #` + round + `\nCPU chose ${cpuChoice}` + 
         `\nUSER chose ${userChoice}\n` + winner;
-   maincontainer.appendChild(div)
 }
 
 let pointTracker = function() {
@@ -108,9 +115,9 @@ let pointTracker = function() {
     const cpupoints = document.querySelector(".cpupoints");
     userpoints.textContent = `USER SCORE: ${userScore}`;
     cpupoints.textContent = `CPU SCORE: ${cpuScore}`;
-    // if (userScore === 5 || cpuScore === 5) {
-    //     modal.style.display = "block"
-    // }
+    if (userScore == 5 || cpuScore == 5) {
+        modalContainer.style.display = "flex";
+    }
 }
 
 let finalWinner = function(userScore, cpuScore) {
@@ -159,8 +166,6 @@ buttons.forEach(button=> button.addEventListener('click', singleRound));
 // game()
 console.log("test")
 
-const openModal = document.querySelector(".openModal")
-const modalContainer = document.querySelector(".modalContainer")
 openModal.addEventListener('click', () => {
     modalContainer.style.display = "flex";
 })
