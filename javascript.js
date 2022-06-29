@@ -135,10 +135,13 @@ let pointTracker = function() {
 }
 
 let finalWinner = function(userScore, cpuScore) {
+    const whoWon = document.querySelector(".whoWon");
     if (userScore > cpuScore) {
-         finalwinner = "USER"
+        whoWon.style.color = "rgb(46, 46, 255)"
+        finalwinner = "USER"
     } else if (userScore < cpuScore) {
-         finalwinner = "CPU"
+        whoWon.style.color = "rgb(252, 39, 39)"
+        finalwinner = "CPU"
     }
 }
 
