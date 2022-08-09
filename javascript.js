@@ -19,9 +19,6 @@ const cpupoints = document.querySelector(".cpupoints");
 
 
 
-// let resultpopup = function () {
-//     resultcontainer.style.display = "flex";
-// }
 
 let validateInput = function(choice) {
     if(choices.includes(choice)) {
@@ -45,24 +42,6 @@ let cpuSelection = function() {
    }
 };
 
-//asks for user input of rock/paper/scissors
-// let userSelection = function() {
-//     let input = prompt("Please type rock, paper, or scissors.");
-//     while(input == null) {
-//         input = prompt("Please type rock, paper, or scissors.");
-//     }
-//     input = input.toLowerCase();
-//     let check = validateInput(input)
-//     while (check == false) {
-//         input = prompt("Oops! Looks like you mispelled your choice! Please type rock, paper, or scissors!");
-//         while(input == null) {
-//             input = prompt("Please type rock, paper, or scissors.");
-//         }
-//         input = input.toLowerCase();
-//         check = validateInput(input)
-//     }
-//     return(input)
-// }
 
 
 //takes cpuChoice and userChoice, then outputs string declaring winner.
@@ -96,26 +75,14 @@ let singleRound = function(e) {
     let cpuChoice = cpuSelection();
     let userChoice = userSelection;
     const winner = checkWinner(userChoice, cpuChoice);
-    // console.log(`ROUND #` + round)
-    // console.log(`CPU chose ${cpuChoice}`);
-    // console.log(`USER chose ${userChoice}`);
-    // console.log(winner)
-    // console.log(`USER SCORE: ${userScore}`)
-    // console.log(`CPU SCORE: ${cpuScore}`)
     textResults(round, cpuChoice, userChoice, winner);
     pointTracker();
-    // resultpopup();
     return(winner)
 }
 
 
 
 let textResults = function(round, cpuChoice, userChoice, winner){
-    // const resultContainer = document.querySelector(".resultContainer");
-    // const roundNUM = document.querySelector(".roundNUM");
-    // const userpick = document.querySelector(".userpick");
-    // const cpupick = document.querySelector(".cpupick");
-    // const whoWins = document.querySelector(".whoWins");
     roundNUM.textContent = `ROUND #` + round; 
     userpick.textContent = `${userChoice}`;
     cpupick.textContent = `${cpuChoice}`;
@@ -124,8 +91,6 @@ let textResults = function(round, cpuChoice, userChoice, winner){
 }
 
 let pointTracker = function() {
-    // const userpoints = document.querySelector(".userpoints");
-    // const cpupoints = document.querySelector(".cpupoints");
     userpoints.textContent = `USER SCORE: ${userScore}`;
     cpupoints.textContent = `CPU SCORE: ${cpuScore}`;
     if (userScore == 5 || cpuScore == 5) {
